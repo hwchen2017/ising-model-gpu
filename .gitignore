@@ -1,4 +1,4 @@
-.*
+.gitignore
 .DS_Store
 ising
 ising_nvidia.cu
