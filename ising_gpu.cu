@@ -228,7 +228,9 @@ int main(int argc, char* argv[])
     
     string filename, s_temp; 
     ofstream out; 
-    out.open("energy_magnetization_" + to_string(L) + "x" + to_string(L) + "_" + to_string(MC_sweep) + ".txt"); 
+
+    if(write_to_file)
+        out.open("energy_magnetization_" + to_string(L) + "x" + to_string(L) + "_" + to_string(MC_sweep) + ".txt"); 
 
     // for(int cnt = 300; cnt >= 150;)
     // {
@@ -265,7 +267,7 @@ int main(int argc, char* argv[])
 
 
         printf("Elapsed time for equilibrium: %.2f ms\n", time_ms);
-        printf("MC sweep per ms: %f\n", (double) MC_sweep / time_ms);
+        printf("MC sweep per ms: %f\n", (double) MC_sweep/time_ms );
 
 
         double energy = 0.0, mag = 0.0; 
@@ -294,7 +296,8 @@ int main(int argc, char* argv[])
         printf("Energy: %.6f\n", avg_ene); 
         printf("Magnetization: %.2f\n\n", avg_mag);  
         
-        out<<temp<<" "<<avg_ene<<" "<<ene_sq<<" "<<avg_mag<<" "<<mag_sq<<endl; 
+        if(write_to_file)
+            out<<temp<<" "<<avg_ene<<" "<<ene_sq<<" "<<avg_mag<<" "<<mag_sq<<endl; 
     
         s_temp = to_string(temp); 
         while(s_temp.back() == '0') s_temp.pop_back(); 
