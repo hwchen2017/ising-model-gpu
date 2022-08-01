@@ -2,12 +2,9 @@
 
 # Usage
 
-Compile
+Compile `ncvv ising_gpu.cu -o ising -std=c++11 -lcurand`
 
-`ncvv ising_gpu.cu -o ising -std=c++11 -lcurand`
-
-Run
-`./ising -l 1024 -s 200000 -m 1000`
+Run `./ising -l 1024 -s 200000 -m 1000`
 
 Options: 
 
@@ -23,12 +20,20 @@ Options:
     -f: 1 for writing spin configuration to file. Default: 0 
 ~~~
        
-   
-
 
 # Results
 
-Magnetization as a function of temperature
+### Monte Carlo sweep per ms
+
+Lattice size: 1024 $\times$ 1024
+
+CPU (Intel 11500):  0.023; GPU (Nvidia 1660 supper): 6.60
+
+GPU speedup: 6.60/0.023 $\approx$ 287.
+
+GPU is about 287 time fatser than naive CPU implementation.  
+ 
+### Physical quantities
 
 ![mag](./images/magnetization.png)
 
